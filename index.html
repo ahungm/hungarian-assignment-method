@@ -607,14 +607,16 @@
                   table = '<tr id="rowA' + i + '"></tr>';
                   $("#result").append(table);
                   for (var j = 0; j < block; j++) {
-                    if (parseInt(assignmentTable[i][j]) == 1) {
+                    if (parseInt(restrictPosition[i][j]) == 1) {
+                      table = "<td>M</td>";
+                    } else if (parseInt(assignmentTable[i][j]) == 1) {
                       table =
                         "<td style='color: rgb(15, 255, 15); font-weight: bold;'>" +
                         originalData[i][j] +
                         "*" +
-                        "</td>"; // Display the assignment value
+                        "</td>";
                     } else {
-                      table = "<td>" + originalData[i][j] + "</td>"; // Display the original value
+                      table = "<td>" + originalData[i][j] + "</td>";
                     }
                     $("#rowA" + i).append(table);
                   }
@@ -629,7 +631,7 @@
                   for (var j = 0; j < block; j++) {
                     if (parseInt(assignmentTable[i][j]) == 1) {
                       ans = ans + parseInt(originalData[i][j]);
-                      solutionValues.push(originalData[i][j]);
+                      solutionValues.push(assignmentTable[i][j]);
                     }
                   }
                 }
@@ -640,12 +642,20 @@
                   for (var j = 0; j < block; j++) {
                     if (parseInt(assignmentTable[i][j]) == 1) {
                       $("#result").append(
-                        "X<sub>" +
+                        "<li>X<sub>" +
                           (i + 1) +
                           (j + 1) +
-                          "</sub> = " +
+                          "</sub> = <strong style='color: rgb(15, 255, 15);'>" +
                           solutionValues[i] +
-                          "  <br/>"
+                          "</strong>" +
+                          "&nbsp;&nbsp;&nbsp;&nbsp;" + // 4 non-breaking spaces
+                          "C<sub>" +
+                          (i + 1) +
+                          (j + 1) +
+                          "</sub> = <strong style='color: rgb(15, 255, 15);'>" +
+                          originalData[i][j] +
+                          "</strong>" +
+                          "</li><br/>"
                       );
                     }
                   }
@@ -653,12 +663,12 @@
 
                 if (type == "max") {
                   $("#result").append(
-                    "<br/><br/><label class='result' style='font-weight: bolder;'>Beneficio (Máximo) : </label>" +
+                    "<br/><br/><label class='result' style='font-weight: bolder; color: #ff5252;'>Beneficio / Ganancia Máxima (Z) : </label>" +
                       ans
                   );
                 } else {
                   $("#result").append(
-                    "<br/><br/><label class='result' style='font-weight: bolder;'>Costo (Mínimo) : </label>" +
+                    "<br/><br/><label class='result' style='font-weight: bolder; color: #00d5ff;'>Costo Mínimo (Z) : </label>" +
                       ans
                   );
                 }
@@ -746,13 +756,15 @@
                       parseInt(coveredRows[i]) == 1 &&
                       parseInt(coveredCols[j]) == 1
                     ) {
-                      //alert("in 1");
+                      // If both the row i and the column j are covered,
+                      // increment the data at (i, j) by smallUncover
                       data[i][j] = data[i][j] + smallUncover;
                     } else if (
                       parseInt(coveredRows[i]) == 0 &&
                       parseInt(coveredCols[j]) == 0
                     ) {
-                      //alert("in 2");
+                      // If both the row i and the column j are uncovered,
+                      // decrement the data at (i, j) by smallUncover
                       data[i][j] = data[i][j] - smallUncover;
                     }
                   }

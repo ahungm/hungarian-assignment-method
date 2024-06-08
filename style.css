@@ -38,6 +38,7 @@ td {
   font-weight: bolder;
   color: rgb(138, 247, 255);
 }
+
 body {
   font-family: "Book Antiqua", sans-serif;
   font-size: 20px;
@@ -49,6 +50,7 @@ body {
   display: flex;
   align-items: center;
 }
+
 h1 {
   text-align: center;
 }
