@@ -1,61 +1,98 @@
 .inTable {
-	max-width: 50px;
-	text-align: center;
+  max-width: 50px;
+  text-align: center;
+  background-color: #152642; /* Change the input background color */
+  color: white; /* Change the font color */
 }
+
+#problemType {
+  color: white;
+  font-family: "Book Antiqua", sans-serif;
+  font-weight: bolder;
+  padding: 10px;
+  background-color: #002aff;
+  margin-left: 150px;
+  border-radius: 5px;
+}
+
+input[type="number"] {
+  text-align: center;
+  background-color: #152642; /* Change the combo box color */
+  color: white; /* Change the font color */ /* Firefox */
+  width: 10%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  /* Chrome, Safari, Edge, Opera */
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 td {
-   border: 1px solid black;
-   padding: 5px;
-   text-align: center;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 5px;
+  text-align: center;
 }
 .note {
-	font-weight: bolder;
-	color: green;
+  font-weight: bolder;
+  color: rgb(138, 247, 255);
 }
 body {
-	font-family: "Book Antiqua",sans-serif;
-	font-size: 20px;
-	background-color: white;
-	margin-left: 300px;
-	margin-right: 300px;
+  font-family: "Book Antiqua", sans-serif;
+  font-size: 20px;
+  color: white;
+  background-color: #152642;
+  margin-left: 300px;
+  margin-right: 300px;
+  text-align: justify;
+  display: flex;
+  align-items: center;
 }
 h1 {
-	text-align: center;
+  text-align: center;
 }
 @media (max-width: 1200px) {
   body {
-    background: white;
+    background: #152642;
     margin-left: 0px;
-	margin-right: 0px;
-	}
+    margin-right: 0px;
+  }
 }
 input[type="button"] {
-	background-color: #008CBA;
-    border: 2px solid #008CBA;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
+  background-color: #02c0ff;
+  border: 2px solid #008cba;
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
 }
-input[type="button"]:hover, input[type="button"]:focus {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #008CBA;
+input[type="button"]:hover,
+input[type="button"]:focus {
+  background-color: #0044ba;
+  color: white;
+  border: 2px solid #0044ba;
 }
 #anotherQue {
-	background-color: #f44336;
-    border: 2px solid #f44336;
+  background-color: #ff483b;
+  border: 2px solid #f44336;
+  margin-right: 120px;
 }
-#anotherQue:hover, #anotherQue:focus, #printAns:hover, #printAns:focus {
-	background-color: white; 
-    color: black; 
-    border: 2px solid #f44336;
+#anotherQue:hover,
+#anotherQue:focus,
+#printAns:hover,
+#printAns:focus {
+  background-color: rgb(153, 19, 255);
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(153, 19, 255);
 }
 .result {
-	color: red;
+  color: red;
 }
-
