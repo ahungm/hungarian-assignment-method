@@ -28,43 +28,51 @@
             height="50"
           />
         </h1>
-        <br />
+        <br /><br />
       </div>
       <div>
         <label>Seleccione el tipo de problema: </label>
         <select id="problemType">
-          <option value="min" selected="selected">Minimización (MIN)</option>
-          <option value="max">Maximización (MAX)</option></select
-        ><br /><br />
+          <option value="min" selected="selected">Minimización ( MIN )</option>
+          <option value="max">Maximización ( MAX )</option></select
+        ><br /><br /><br />
 
         <label class="note"
           >Observación : Para indicar un valor restringido, simplemente inserte
           <b>"M"</b> en la posición correspondiente.</label
-        ><br /><br />
+        ><br /><br /><br />
 
         <label>Número de filas : </label>
-        <input type="number" id="rows" min="1" /><br /><br />
+        <input type="number" id="rows" min="1" /><br /><br /><br />
 
         <label>Número de columnas : </label>
-        <input type="number" id="cols" min="1" /><br /><br />
+        <input type="number" id="cols" min="1" /><br /><br /><br />
 
         <input
           type="button"
           id="display_matrix"
           value="Generar Matriz para ingresar datos"
-        /><br /><br />
+        /><br /><br /><br />
       </div>
       <div id="dataMatrix"></div>
-      <br />
+      <br /><br />
 
       <div id="resultBtn" style="display: none">
         <input type="button" id="getResult" value="Obtener resultado" />
       </div>
 
       <div id="result"></div>
-      <br /><br />
+      <br /><br /><br /><br />
 
-      <div id="doAnother" style="display: none; text-align: center">
+      <div
+        id="doAnother"
+        style="
+          display: none;
+          text-align: center;
+          position: relative;
+          top: -30px;
+        "
+      >
         <input type="button" id="anotherQue" value="Resolver otro problema" />
         <input type="button" id="printAns" value="Imprimir Respuesta" />
       </div>
@@ -175,7 +183,7 @@
             }
 
             $("#result").html(
-              "<br/><b>La matriz proporcionada y balanceada es :</b> <br/><br/>"
+              "<br/><br/><b>La matriz proporcionada y balanceada es :</b><br/><br/><br/>"
             );
 
             var table = '<table id="table2">';
@@ -216,9 +224,9 @@
               }
 
               $("#result").append(
-                "<br/><b>Conversión a un problema de Minimización :</b> <br/>El problema de maximización anterior se puede convertir a un problema de minimización equivalente restando todos los elementos de la matriz con respecto al elemento de coeficiente más alto, que en este caso es " +
+                "<br/><br/><br/><b>Conversión a un problema de Minimización :</b><br /><br /><br/>El problema de maximización anterior se puede convertir a un problema de minimización equivalente restando todos los elementos de la matriz con respecto al elemento de coeficiente más alto, que en este caso es " +
                   maxValue +
-                  ".<br/><br/>"
+                  ".<br/><br/><br />"
               );
 
               var table = '<table id="tableCon">';
@@ -268,7 +276,7 @@
             }
 
             $("#result").append(
-              "<br/><br/><b>Paso 1 :</b><br/>Identificar el elemento mínimo en cada fila y restarlo de cada elemento de esa fila. El resultado se muestra en la siguiente tabla.<br/><br/>"
+              "<br/><br/><b>Paso 1 :</b><br/><br/><br/>Identificar el elemento mínimo en cada fila y restarlo de cada elemento de esa fila. El resultado se muestra en la siguiente tabla.<br/><br/><br/>"
             );
 
             var table = '<table id="table3">';
@@ -308,7 +316,7 @@
             }
 
             $("#result").append(
-              "<br/><br/><b>Paso 2 :</b><br/>Identificar el elemento de menor coeficiente en cada columna y restarlo de cada elemento de esa columna. El resultado se muestra en la siguiente tabla.<br/><br/>"
+              "<br/><br/><b>Paso 2 :</b><br/><br/><br/>Identificar el elemento de menor coeficiente en cada columna y restarlo de cada elemento de esa columna. El resultado se muestra en la siguiente tabla.<br/><br/><br/>"
             );
 
             var table = '<table id="table4">';
@@ -332,23 +340,23 @@
             $("#result").append(table);
 
             $("#result").append(
-              "<br/><br/><b>Paso 3 :</b><br/>Realizar las asignaciones para la matriz reducida obtenida de los pasos 1 y 2 de la siguiente manera:<br/><br/>a. Para cada fila o columna con una única celda de valor cero que no ha sido asignada o eliminada, marcar ese valor cero como una celda asignada.<br/><br/>b. Para cada cero que se asigna, tachar (X) todos los otros ceros en la misma fila y la misma columna.<br/><br/>c. Si para una fila y una columna, hay dos o más ceros y uno no puede ser elegido por inspección, elegir la celda arbitrariamente para la asignación.<br/><br/>d. El proceso anterior puede continuar hasta que cada celda de cero esté asignada o tachada (X).<br/><br/>"
+              "<br/><br/><b>Paso 3 :</b><br/><br/><br/>Realizar las asignaciones para la matriz reducida obtenida de los pasos 1 y 2 de la siguiente manera:<br/><br/><br/><ol>3.1&nbsp;&nbsp;&nbsp;&nbsp;Para cada fila o columna con una única celda de valor cero que no ha sido asignada o eliminada, marcar ese valor cero como una celda asignada.<br/><br/><br/>3.2&nbsp;&nbsp;&nbsp;&nbsp;Para cada cero que se asigna, tachar (X) todos los otros ceros en la misma fila y la misma columna.<br/><br/><br/>3.3&nbsp;&nbsp;&nbsp;&nbsp;Si para una fila y una columna, hay dos o más ceros y uno no puede ser elegido por inspección, elegir la celda arbitrariamente para la asignación.<br/><br/><br/>3.4&nbsp;&nbsp;&nbsp;&nbsp;El proceso anterior puede continuar hasta que cada celda de cero esté asignada o tachada (X).</ol><br/><br/>"
             );
 
             $("#result").append(
-              "<br/><br/><b>Paso 4 :</b><br/>Se encuentra una asignación óptima, si el número de celdas asignadas es igual al número de filas (y columnas). En caso de que se haya elegido una celda cero arbitrariamente, puede haber soluciones óptimas alternas o múltiples. Si no se encuentra una solución óptima, dirigirse al paso 5.<br/><br/>"
+              "<br/><br/><b>Paso 4 :</b><br/><br/><br/>Se encuentra una asignación óptima, si el número de celdas asignadas es igual al número de filas (y columnas). En caso de que se haya elegido una celda cero arbitrariamente, puede haber soluciones óptimas alternas o múltiples. Si no se encuentra una solución óptima, dirigirse al paso 5.<br/><br/>"
             );
 
             $("#result").append(
-              "<br/><br/><b>Paso 5 :</b><br/>Trazar el mínimo número de líneas verticales y horizontales necesarias para cubrir todos los ceros en la matriz reducida obtenida del paso 3.<br/><br/>"
+              "<br/><br/><b>Paso 5 :</b><br/><br/><br/>Trazar el mínimo número de líneas verticales y horizontales necesarias para cubrir todos los ceros en la matriz reducida obtenida del paso 3.<br/><br/>"
             );
 
             $("#result").append(
-              "<br/><br/><b>Paso 6 :</b><br/>Seleccionar el elemento más pequeño de todos los elementos no cubiertos. Seguidamente, restar este elemento más pequeño de todos los elementos no cubiertos y agregarlo a los elementos que se encuentran en la intersección de dos líneas. Así, se obtiene otra matriz reducida para una nueva asignación.<br/><br/>"
+              "<br/><br/><b>Paso 6 :</b><br/><br/><br/>Seleccionar el elemento más pequeño de todos los elementos no cubiertos. Seguidamente, restar este elemento más pequeño de todos los elementos no cubiertos y agregarlo a los elementos que se encuentran en la intersección de dos líneas. Así, se obtiene otra matriz reducida para una nueva asignación.<br/><br/>"
             );
 
             $("#result").append(
-              "<br/><br/><b>Paso 7 :</b><br/>Repetir el proceso desde el Paso 3 hasta el Paso 6 hasta que el total de asignaciones (N) sea igual al número de filas/columnas.<br/><br/>"
+              "<br/><br/><b>Paso 7 :</b><br/><br/><br/>Repetir el proceso desde el Paso 3 hasta el Paso 6 hasta que el total de asignaciones (N) sea igual al número de filas/columnas.<br/><br/>"
             );
 
             assignmentTable = new Array(block);
@@ -597,7 +605,7 @@
             while (true) {
               if (cntAlloc == block) {
                 $("#result").append(
-                  "<br/><br/><b>Matriz de Asignación (Óptima) :</b><br/><br/>"
+                  "<br/><br/><b>Matriz de Asignación (Óptima) :</b><br/><br/><br/>"
                 );
 
                 var table = '<table id="asiignmentTable">';
